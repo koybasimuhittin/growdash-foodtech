@@ -38,7 +38,7 @@ export default function Home() {
 			<div className="h-20 w-screen bg-white fixed top-0 left-0 z-10 flex items-center justify-end pr-12">
 				<NewDiscountModal />
 			</div>
-			<div className="mt-20 w-screen">
+			<div className="mt-20 w-screen absolute -z-10">
 				<Scheduler
 					stickyNavigation={true}
 					navigation={true}
