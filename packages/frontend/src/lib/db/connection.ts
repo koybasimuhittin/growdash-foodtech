@@ -15,8 +15,8 @@ export function getDatabase() {
 		db = drizzle(
 			connect({
 				host: "aws.connect.psdb.cloud",
-				username: "k46k6m05f4l6o212vf41",
-				password: "pscale_pw_rsIntBiaOzix0HgNV9mQqgAvUU05dBxpEbqE8ZK7Tpf",
+				username: "j0erhdbt9ocjfck5nd7o",
+				password: "pscale_pw_GMOwqp2A1zPR82ZosidcWV7XzaDu2KCnSsIg0iRgPzi",
 			})
 		)
 	}
