@@ -191,7 +191,9 @@ export default function NewDiscountModal() {
 			}}
 		>
 			<DialogTrigger asChild>
-				<Button>+Add Discount</Button>
+				<Button className="bg-[#5e3061ff] hover:bg-[#734079ff] w-48 h-12 text-lg">
+					+Add Discount
+				</Button>
 			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
