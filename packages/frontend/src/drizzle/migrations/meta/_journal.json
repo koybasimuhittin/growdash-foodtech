@@ -15,6 +15,13 @@
       "when": 1697315214618,
       "tag": "0001_sloppy_vengeance",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1697332630961,
+      "tag": "0002_acoustic_jimmy_woo",
+      "breakpoints": true
     }
   ]
 }

@@ -6,7 +6,7 @@ import {
 	index,
 	uniqueIndex,
 	varchar,
-	mediumint,
+	date,
 } from "drizzle-orm/mysql-core"
 import { type InferSelectModel } from "drizzle-orm"
 
@@ -38,6 +38,7 @@ export const menuItem = mysqlTable(
 		id: serial("id").primaryKey(),
 		name: varchar("name", { length: 255 }).notNull(),
 		price: double("price").notNull(),
+		image: varchar("name", { length: 255 }).notNull(),
 		menuId: int("menu_id").notNull(),
 	},
 	(menuItem) => ({
@@ -63,8 +64,8 @@ export const menu = mysqlTable(
 	{
 		id: serial("id").primaryKey(),
 		restaurantId: int("restaurant_id").notNull(),
-		createDate: int("create_date").notNull(),
-		updateDate: int("update_date").notNull(),
+		createDate: date("create_date").notNull(),
+		updateDate: date("update_date").notNull(),
 	},
 	(menu) => ({
 		menuIndex: uniqueIndex("menu_idx").on(menu.restaurantId),

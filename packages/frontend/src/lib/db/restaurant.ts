@@ -5,7 +5,7 @@ import { createMenu } from "./menu"
 
 export async function createRestaurant(
 	restaurant: schema.NewRestaurant
-): Promise<void> {
+): Promise<schema.Restaurant> {
 	const db = getDatabase()
 	await db.insert(schema.restaurant).values(restaurant)
 	const insertedRestaurant = (
@@ -16,7 +16,25 @@ export async function createRestaurant(
 	)[0]
 	await createMenu({
 		restaurantId: insertedRestaurant.id,
-		createDate: Math.floor(Date.now() / 1000),
-		updateDate: Math.floor(Date.now() / 1000),
+		createDate: new Date(),
+		updateDate: new Date(),
 	})
+
+	return insertedRestaurant
+}
+
+export async function getRestaurant(slug: string) {
+	const db = getDatabase()
+	const restaurant = (
+		await db
+			.select()
+			.from(schema.restaurant)
+			.where(eq(schema.restaurant.slug, slug))
+	)[0]
+
+	if (restaurant) {
+		return restaurant
+	} else {
+		throw new Error("Restaurant not found")
+	}
 }

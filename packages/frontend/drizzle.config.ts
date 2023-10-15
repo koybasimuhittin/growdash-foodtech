@@ -10,6 +10,6 @@ export default {
 	out: "./src/drizzle/migrations",
 	driver: "mysql2",
 	dbCredentials: {
-		connectionString: process.env.DATABASE_URL!,
+		connectionString: `mysql://waio8qrenhgb7rm4g4hq:pscale_pw_drM5EscEoqIypXxLU1XLLoDH5hWWHD6a6kT0frrbSI7@eu-central.connect.psdb.cloud/growdash-foodtech?ssl={"rejectUnauthorized":true}`,
 	},
 } satisfies Config

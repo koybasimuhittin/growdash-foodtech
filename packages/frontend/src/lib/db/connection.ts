@@ -1,4 +1,4 @@
-import { serverConfig } from "@/config"
+import { publicConfig } from "../../config"
 import {
 	PlanetScaleDatabase,
 	drizzle,
@@ -11,7 +11,14 @@ let boostedDb: PlanetScaleDatabase
 
 export function getDatabase() {
 	if (!db) {
-		db = drizzle(connect({ url: serverConfig.DATABASE_URL }))
+		console.log(publicConfig.NEXT_PUBLIC_DATABASE_URL)
+		db = drizzle(
+			connect({
+				host: "aws.connect.psdb.cloud",
+				username: "waio8qrenhgb7rm4g4hq",
+				password: "pscale_pw_drM5EscEoqIypXxLU1XLLoDH5hWWHD6a6kT0frrbSI7",
+			})
+		)
 	}
 	return db
 }
@@ -20,7 +27,13 @@ export function getDatabase() {
 // https://planetscale.com/docs/concepts/how-to-use-planetscale-boost#option-1-separate-connection-for-cached-queries-recommended
 export async function getBoostedDatabase() {
 	if (!boostedDb) {
-		boostedDb = drizzle(connect({ url: serverConfig.DATABASE_URL }))
+		boostedDb = drizzle(
+			connect({
+				host: "aws.connect.psdb.cloud",
+				username: "waio8qrenhgb7rm4g4hq",
+				password: "pscale_pw_drM5EscEoqIypXxLU1XLLoDH5hWWHD6a6kT0frrbSI7",
+			})
+		)
 		await boostedDb.execute(sql`SET @@boost_cached_queries = true;`)
 	}
 	return boostedDb
