@@ -19,6 +19,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
+			<head>
+				<link rel="icon" type="image/png" sizes="16x16" href="/logo_v3.png" />
+			</head>
 			<body className={poppins.className + "relative mt-20 bg-white"}>
 				<ContextProvider>
 					<Navbar />
