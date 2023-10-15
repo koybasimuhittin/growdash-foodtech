@@ -107,7 +107,7 @@ export default function SchedulePage({ params }: { params: { slug: string } }) {
 			</div>
 			<div className="w-screen absolute -z-10 top-20">
 				<Scheduler
-					stickyNavigation={true}
+					stickyNavitation={true}
 					navigation={true}
 					resourceViewMode="default"
 					hourFormat="24"
