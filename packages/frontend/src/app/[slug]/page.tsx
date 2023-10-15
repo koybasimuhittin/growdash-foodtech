@@ -71,7 +71,7 @@ export default function RestaurantPage({
 						</div>
 					</TabsContent>
 					<TabsContent value="branches">
-						<p className="ml-20 mb-6 w-full">
+						<p className="ml-20 mt-4 mb-6 w-full text-lg font-bold">
 							Manage your branches from this section
 						</p>
 					</TabsContent>
