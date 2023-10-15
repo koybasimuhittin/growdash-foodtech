@@ -5,7 +5,7 @@ export const MENU = [
 		menuId: 0,
 		image:
 			"https://cdn.yemek.com/mnresize/1250/833/uploads/2023/04/sis-kebap-onecikan.jpg",
-		discount: 10,
+		discount: 12,
 		extra: new Date(Number(new Date()) + 12000000),
 	},
 	{
@@ -14,7 +14,7 @@ export const MENU = [
 		menuId: 0,
 		image:
 			"https://cdn.yemek.com/mnresize/1250/833/uploads/2020/04/lahmacun-yemekcom-1.jpg",
-		discount: 5,
+		discount: 14,
 		extra: new Date(Number(new Date()) + 700000),
 	},
 	{
@@ -23,7 +23,7 @@ export const MENU = [
 		menuId: 0,
 		image:
 			"https://cdn.yemek.com/mnresize/940/940/uploads/2015/03/zeytinyagli-enginar-yemekcom.jpg",
-		discount: 34,
+		discount: 32,
 		extra: "vivibot",
 	},
 	{
@@ -32,7 +32,7 @@ export const MENU = [
 		menuId: 0,
 		image:
 			"https://cdn.yemek.com/mnresize/940/940/uploads/2015/05/omlet-yemekcom.jpg",
-		discount: 18,
+		discount: 2,
 		extra: "vivibot",
 	},
 	{
@@ -41,7 +41,7 @@ export const MENU = [
 		menuId: 0,
 		image:
 			"https://www.sutispangalti.com/wp-content/uploads/2020/07/sicak-kahvalti-tabagi-2-sutis.jpg",
-		discount: 23,
+		discount: 2,
 		extra: new Date(Number(new Date()) + 1200000000),
 	},
 ]

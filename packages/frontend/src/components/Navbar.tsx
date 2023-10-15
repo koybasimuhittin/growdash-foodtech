@@ -22,7 +22,7 @@ export default function Navbar() {
 	const { slug } = useParams()
 
 	return (
-		<div className="fixed top-0 left-0 w-screen h-20 bg-gray-700 flex items-center justify-end p-4">
+		<div className="fixed top-0 left-0 w-screen h-20 bg-gray-700 flex items-center justify-end p-4 z-10">
 			<NavigationMenu>
 				<NavigationMenuList>
 					{slug === restaurant.slug ? (

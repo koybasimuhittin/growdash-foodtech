@@ -15,8 +15,8 @@ export function getDatabase() {
 		db = drizzle(
 			connect({
 				host: "aws.connect.psdb.cloud",
-				username: "waio8qrenhgb7rm4g4hq",
-				password: "pscale_pw_drM5EscEoqIypXxLU1XLLoDH5hWWHD6a6kT0frrbSI7",
+				username: "yfl8419okds1osy6fd5r",
+				password: "pscale_pw_49qW9XoiPQh8bX1EHNrllJ8JrDmcTtSIWxkCU6Ei68y",
 			})
 		)
 	}
@@ -30,8 +30,8 @@ export async function getBoostedDatabase() {
 		boostedDb = drizzle(
 			connect({
 				host: "aws.connect.psdb.cloud",
-				username: "waio8qrenhgb7rm4g4hq",
-				password: "pscale_pw_drM5EscEoqIypXxLU1XLLoDH5hWWHD6a6kT0frrbSI7",
+				username: "yfl8419okds1osy6fd5r",
+				password: "pscale_pw_49qW9XoiPQh8bX1EHNrllJ8JrDmcTtSIWxkCU6Ei68y",
 			})
 		)
 		await boostedDb.execute(sql`SET @@boost_cached_queries = true;`)

@@ -59,7 +59,7 @@ function ItemList({
 								}}
 								className={cn(
 									pickedItems.includes(index)
-										? "border-[2px] border-red-700"
+										? "border-[4px] border-red-300"
 										: "border-0",
 									"hover:bg-red-400 hover:border-2 cursor-pointer"
 								)}
