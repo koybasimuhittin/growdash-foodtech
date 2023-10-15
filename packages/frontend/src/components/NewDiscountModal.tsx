@@ -44,7 +44,7 @@ function ItemList({
 			<div className="grid grid-cols-3 items-center justify-center p-6 gap-3">
 				{items.map((item, index) => {
 					return (
-						<div className="flex items-center flex-col">
+						<div className="flex items-center flex-col" key={index}>
 							<Avatar
 								onClick={() => {
 									if (pickedItems.includes(index)) {

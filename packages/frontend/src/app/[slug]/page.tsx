@@ -37,9 +37,9 @@ export default function RestaurantPage({
 							Review and update your menu from this section
 						</p>
 						<div className="grid md:grid-cols-4 grid-cols-2 w-screen px-12 items-center gap-10">
-							{MENU.map((item) => {
+							{MENU.map((item, index) => {
 								return (
-									<Card className="relative">
+									<Card className="relative" key={index}>
 										<CardHeader>
 											<CardTitle>
 												{item.name[0].toUpperCase() +
