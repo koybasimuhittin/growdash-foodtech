@@ -17,14 +17,25 @@ import {
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function Navbar() {
 	const { restaurant } = useContext(RestaurantContext) as IRestaurantContext
 	const { slug } = useParams()
+	const router = useRouter()
 
 	return (
 		<div className="fixed top-0 left-0 w-screen flex items-center justify-between h-20 bg-white p-12 z-10">
-			<Image src="/vivid_logo.png" alt="logo" width={170} height={30} />
+			<Image
+				src="/vivid_logo.png"
+				alt="logo"
+				width={170}
+				height={30}
+				onClick={() => {
+					router.push("/")
+				}}
+				className="cursor-pointer"
+			/>
 			<div className="flex items-center justify-end">
 				<NavigationMenu>
 					<NavigationMenuList>

@@ -8,7 +8,6 @@ import { MENU } from "../../constants"
 import {
 	Card,
 	CardContent,
-	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
@@ -16,6 +15,16 @@ import {
 import Image from "next/image"
 import slugify from "slugify"
 import moment from "moment"
+import { Skeleton } from "@/components/ui/skeleton"
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
 
 export default function RestaurantPage({
 	params,
@@ -25,7 +34,7 @@ export default function RestaurantPage({
 	const { restaurant } = useContext(RestaurantContext) as IRestaurantContext
 
 	return (
-		<div className="flex items-center justify-between pt-6 max-w-screen overflow-hidden">
+		<div className="flex items-center justify-between pt-6 max-w-screen overflow-hidden mb-20">
 			{restaurant.slug === params.slug ? (
 				<Tabs defaultValue="menu" className="w-[400px]">
 					<TabsList className="ml-12">
@@ -36,10 +45,10 @@ export default function RestaurantPage({
 						<p className="ml-20 mt-4 mb-6 w-full text-lg font-bold">
 							Review and update your menu from this section
 						</p>
-						<div className="grid md:grid-cols-4 grid-cols-2 w-screen px-12 items-center gap-10">
+						<div className="flex flex-col w-screen px-12 items-center gap-10 justify-end">
 							{MENU.map((item, index) => {
 								return (
-									<Card className="relative" key={index}>
+									<Card className="relative w-2/3" key={index}>
 										<CardHeader>
 											<CardTitle>
 												{item.name[0].toUpperCase() +
@@ -49,25 +58,72 @@ export default function RestaurantPage({
 												%{item.discount}
 											</div>
 										</CardHeader>
-										<CardContent>
-											<Image
-												src={item.image}
-												alt={slugify(item.name)}
-												width={400}
-												height={400}
-											/>
+										<CardContent className="flex gap-6">
+											{item.image ? (
+												<Image
+													src={item.image}
+													alt={slugify(item.name)}
+													width={320}
+													height={320}
+													className="w-80 h-48"
+												/>
+											) : (
+												<Skeleton className="w-full h-48 w-80" />
+											)}
+											<div className="flex flex-col items-start justfiy-end gap-2 h-full">
+												<span className="font-normal flex gap-1">
+													Discount:
+													<p className="font-bold">
+														{item.extra === "vivibot"
+															? "Managing by vivibot"
+															: `Ends ${moment(item.extra).fromNow()}`}
+													</p>
+												</span>
+												<span className="font-nomal flex flex-col gap-1">
+													Description:
+													<p className="font-bold">{item.description}</p>
+												</span>
+												<span className="font-nomal flex gap-1">
+													Cost:
+													<p className="font-bold">{item.price}₺</p>
+												</span>
+											</div>
 										</CardContent>
-										<CardFooter className="justify-between">
-											<p className="text-sm">
-												{item.extra === "vivibot"
-													? "Discount managing by vivibot"
-													: `Discount ends ${moment(item.extra).fromNow()}`}
-											</p>
-											<p className="font-bold">{item.price}₺</p>
-										</CardFooter>
+										<CardFooter className="justify-between"></CardFooter>
 									</Card>
 								)
 							})}
+							<Dialog>
+								<DialogTrigger asChild>
+									<Button variant="secondary" className="w-64 h-16 text-lg">
+										See suggested revisions
+									</Button>
+								</DialogTrigger>
+								<DialogContent>
+									<DialogHeader>
+										<DialogTitle>Suggested revisions</DialogTitle>
+										<DialogDescription>
+											{MENU.map((item, index) => {
+												console.log(review(item))
+												return (
+													<div className="flex flex-col gap-6 mb-2">
+														{review(item).length > 0 && (
+															<span className="flex flex-col">
+																<p className="font-bold">
+																	{item.name.toUpperCase()}:
+																</p>
+																{review(item).map((item) => {
+																	return <p className="font-normal">{item}</p>
+																})}
+															</span>
+														)}
+													</div>
+												)
+											})}
+										</DialogDescription>
+									</DialogHeader>
+								</DialogContent>
+							</Dialog>
 						</div>
 					</TabsContent>
 					<TabsContent value="branches">
@@ -81,4 +137,28 @@ export default function RestaurantPage({
 			)}
 		</div>
 	)
+}
+
+const review = (item: (typeof MENU)[0]) => {
+	let { name, description, price, image, discount } = item
+	name = name.toLowerCase()
+	let recommendations: string[] = []
+	if (image === null) {
+		recommendations.push(`Add an image of ${name}`)
+	}
+	if (description === null) {
+		recommendations.push(`Add a description of ${name}`)
+	} else if (description!.length < 20) {
+		recommendations.push(`Add a longer description of ${name}`)
+	}
+	if (
+		name.includes("combo") ||
+		name.includes("special") ||
+		name.includes("premium") ||
+		name.includes("deluxe")
+	) {
+		recommendations.push(`Put this food to first page of menu`)
+	}
+
+	return recommendations
 }

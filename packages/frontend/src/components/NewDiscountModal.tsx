@@ -64,7 +64,7 @@ function ItemList({
 									"hover:bg-red-400 hover:border-2 cursor-pointer"
 								)}
 							>
-								<AvatarImage src={item.image} alt={slugify(item.name)} />
+								<AvatarImage src={item.image!} alt={slugify(item.name)} />
 								<AvatarFallback>CN</AvatarFallback>
 							</Avatar>
 							<p>{item.name}</p>
