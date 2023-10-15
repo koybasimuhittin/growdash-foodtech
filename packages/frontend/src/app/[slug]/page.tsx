@@ -104,16 +104,22 @@ export default function RestaurantPage({
 										<DialogTitle>Suggested revisions</DialogTitle>
 										<DialogDescription>
 											{MENU.map((item, index) => {
-												console.log(review(item))
 												return (
-													<div className="flex flex-col gap-6 mb-2">
+													<div className="flex flex-col gap-6 mb-2" key={index}>
 														{review(item).length > 0 && (
 															<span className="flex flex-col">
 																<p className="font-bold">
 																	{item.name.toUpperCase()}:
 																</p>
-																{review(item).map((item) => {
-																	return <p className="font-normal">{item}</p>
+																{review(item).map((item, index) => {
+																	return (
+																		<p
+																			className="font-normal"
+																			key={item + index}
+																		>
+																			{item}
+																		</p>
+																	)
 																})}
 															</span>
 														)}

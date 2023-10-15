@@ -14,9 +14,9 @@ export function getDatabase() {
 		console.log(publicConfig.NEXT_PUBLIC_DATABASE_URL)
 		db = drizzle(
 			connect({
-				host: "aws.connect.psdb.cloud",
-				username: "k46k6m05f4l6o212vf41",
-				password: "pscale_pw_rsIntBiaOzix0HgNV9mQqgAvUU05dBxpEbqE8ZK7Tpf",
+				host: publicConfig.NEXT_PUBLIC_DB_HOST,
+				username: publicConfig.NEXT_PUBLIC_DB_USERNAME,
+				password: publicConfig.NEXT_PUBLIC_DB_PASSWORD,
 			})
 		)
 	}

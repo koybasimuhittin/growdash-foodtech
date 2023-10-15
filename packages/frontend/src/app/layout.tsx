@@ -22,11 +22,13 @@ export default function RootLayout({
 			<head>
 				<link rel="icon" type="image/png" sizes="16x16" href="/logo_v3.png" />
 			</head>
-			<body className={poppins.className + "relative mt-20 bg-white"}>
-				<ContextProvider>
-					<Navbar />
-					{children}
-				</ContextProvider>
+			<body className={poppins.className}>
+				<div className="relative mt-20 bg-white">
+					<ContextProvider>
+						<Navbar />
+						{children}
+					</ContextProvider>
+				</div>
 			</body>
 		</html>
 	)
